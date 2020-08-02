@@ -1,1 +1,1 @@
-web: gunicorn main:app
+web: gunicorn azent:app --preload -b 0.0.0.0:5000
