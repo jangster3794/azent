@@ -1,4 +1,4 @@
-from .azent import create_app
+from azent import create_app
 
 app = create_app()
 
