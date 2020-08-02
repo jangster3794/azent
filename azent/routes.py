@@ -12,9 +12,7 @@ def index():
 @application.route('/register', methods=['GET','POST'])
 def register():
     if request.method == 'POST':
-        # payload = request.form
-        # print(payload)
-        payload = json.loads(request.data)
+        payload = request.form
         resp = register_university(payload)
         if not resp.get('success'):
             flash('Something went wrong.')
