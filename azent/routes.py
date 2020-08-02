@@ -1,5 +1,5 @@
 from .utils import *
-from flask import jsonify, request
+from flask import jsonify, request, render_template, flash
 from flask import current_app as application
 import json
 from datetime import datetime
@@ -9,17 +9,26 @@ def index():
     return jsonify({'success': True, 'version': '1.0', 'time': datetime.utcnow()}), 200
 
 
-@application.route('/register', methods=['POST'])
+@application.route('/register', methods=['GET','POST'])
 def register():
-    payload = json.loads(request.data)
-    resp = register_university(payload)
-    return jsonify(resp), 200
+    if request.method == 'POST':
+        # payload = request.form
+        # print(payload)
+        payload = json.loads(request.data)
+        resp = register_university(payload)
+        if not resp.get('success'):
+            flash('Something went wrong.')
+    return render_template('add_university.html')
 
 
 @application.route('/search', methods=['GET'])
 def search():
-    resp = search_universities(request.args)
-    return jsonify(resp), 200
+    resp = {'success': True, 'data': []}
+    if request.args:
+        resp = search_universities(request.args)
+        if not resp.get('success'):
+            flash('Something went wrong.')
+    return render_template('search.html', resp=resp['data'])
 
 
 @application.route('/edit/<university_id>', methods=['POST'])

@@ -13,7 +13,7 @@ def create_app():
 
     db.init_app(app)
 
-    application = Flask(__name__)
+    app.secret_key = '1234'
 
     @atexit.register
     def shutdown():

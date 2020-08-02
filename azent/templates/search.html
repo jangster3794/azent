@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search|Azent</title>
+    <link rel="stylesheet" href="/static/search.css">
+</head>
+<body>
+    <center><div class="header">Search</div></center>
+    <div class="wrapper">
+        <div class="search-option">
+            <input id="alpha_two_code" type="text" placeholder="Country Code">
+        </div>
+        <div class="search-option">
+            <input id="name" type="text" placeholder="University Name">
+        </div>
+        <div class="search-option">
+            <input id="domain" type="text" placeholder="Domain">
+        </div>
+    </div>
+    <center><div onclick="search();" class="search-btn">Search</div></center>
+    <div class="all-results">
+        {% for r in resp %}
+            <div class="results-box">
+                <div class="r">
+                    <div class="r-label">University Name:</div>
+                    <div class="country-name">{{r['name']}}</div>
+                </div>
+                <div class="r">
+                    <div class="r-label">Country Code:</div>
+                <div class="country-name">{{r['alpha_two_code']}}</div>
+                </div>
+                <div class="r">
+                    <div class="r-label">Country Name:</div>
+                <div class="country-name">{{r['country']}}</div>
+                </div>
+                <div class="r">
+                    <div class="r-label">Domain:</div>
+                    <div class="country-name">{{r['domain']}}</div>
+                </div>
+                <div class="r">
+                    <div class="r-label">Web Page:</div>
+                <div class="country-name">{{r['web_page']}}</div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</body>
+<script>
+    function search() {
+        var a = document.getElementsByTagName('input')
+        search_string="?"
+        for(var i=0;i<a.length;i++) {
+            console.log(a[i])
+            search_string = search_string + a[i].id + "=" + a[i].value + "&"
+        }
+        window.location.href = search_string
+    }
+</script>
+</html>

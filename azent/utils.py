@@ -4,6 +4,7 @@ from datetime import datetime as dt
 from sqlalchemy import  func
 
 def register_university(data):
+    print(data)
     try:
         new_university = Universities(
             name=data['name'],

@@ -1,0 +1,69 @@
+html,body {
+    width: 100%
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 40px;
+}
+
+.header {
+    font-size: 40px;
+}
+
+.search-option {
+display: flex;
+flex-direction: column
+}
+
+.search-btn {
+margin-top: 30px;
+width: 200px;
+height: 30px;
+background-color: lightgrey;
+border: 1px solid black;
+cursor: pointer;
+font-size: 20px;
+text-align: center;
+}
+
+.all-results {
+width: 90%;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin-left: 5%;
+}
+
+.results-box {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-top: 40px;
+    background: #E8E8E8;
+    box-shadow: 3px 3px lightgrey;
+}
+
+.r {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.r-label{
+font-size: 20px;
+font-weight: 600;
+width: 35%;
+margin-left: 5%;
+}
+
+.country-name {
+width: 60%;
+font-size: 20px;
+}
